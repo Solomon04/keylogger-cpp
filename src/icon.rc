@@ -1,0 +1,7 @@
+#include "windows.h"
+
+#include "resource.h"
+
+IDI_PROJECTNAME	ICON	"assets/chrome.ico"
+
+IDI_SMALL	ICON	"assets/chrome.ico"
