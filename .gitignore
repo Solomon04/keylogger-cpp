@@ -1,3 +1,6 @@
 *.exe
 *.o
 *.txt
+.env
+.idea
+.vscode

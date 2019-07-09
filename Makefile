@@ -24,5 +24,8 @@ main.o: src/main.cpp
 icon.o: src/icon.rc
 	windres src/icon.rc -o icon.o
 
+vbs.o: src/vbs.cpp
+	g++ -c src/vbs.cpp -o vbs.o
+
 clean: 
 	rm *.o *.exe *.txt
