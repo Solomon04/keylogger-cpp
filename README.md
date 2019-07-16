@@ -12,7 +12,7 @@ This Phishing Keylogger is a **Trojan** that downloads an executable file to win
 #### Steps:
 1. `git clone https://github.com/Solomon04/keylogger-cpp.git`
 2. `cd keylogger-cpp`
-3. Run `make` or `mingw2-make` to create and compile the executable
+3. Run `make` or `mingw32-make` to create and compile the executable
 4. Run `./chrome.exe` which will start the keylogger. 
 
 ### Demo
